@@ -1,8 +1,11 @@
-var limitSecond = 10;
-var showSecond;
+var limitSecond = 0;
 var boxHeight = $(".container").height();
+var girlWidth = $(".girl").width();
+var girlHeight = girlWidth * 1.47 / boxHeight * 100;
+var pathTop = parseInt($(".path").css("top"));
 var tumble = 0;
 var fail = 0;
+var girlHeightPx = girlWidth * 1.47;
 
 // 函式
 var limitTimeNum;
@@ -17,7 +20,6 @@ var obstable_2 = $("<img class='obstacle obstacle-2' src='./img/obstacle-2.png'>
 var show;
 
 function countNum(second) {
-    console.log("countNum");
 
     limitTimeSecond =  Math.floor(second / 1000);
     limitTimeMs =  second % 1000;
@@ -29,6 +31,7 @@ function countNum(second) {
     var limitTimeActiveSecondShow;
     var limitTimeActiveMsShow;
 
+    limitTimeSecond = limitTimeSecond + 50;
     if(limitTimeSecond < 10 && limitTimeSecond >= 0) {
         limitTimeActiveSecondShow = "0" + limitTimeSecond;
     }else {
@@ -51,27 +54,30 @@ function countNum(second) {
 }
 
 function limitTime() {
-    console.log("limitTime");
 
     clearInterval(limitTimeNum);
     var limitMs = limitSecond * 1000;
 
     limitTimeNum = window.setInterval(function () {
         // 數字呈現
-        limitMs = limitMs - 4;
+        limitMs = limitMs + 4;
         countNum(limitMs);
         
 
-        if (limitMs <= 0) {
+        if (limitMs >= 10000) {
             clearInterval(limitTimeNum);
             clearInterval(obstacleKeepMoving);
 
-            // $(".btn-jump").addClass("jumpimg");
             $(".btn-jump").hide();
 
+            var activeSecond = document.getElementById("count_second");
+            var activeMinute = document.getElementById("count_minute");
+            var activeHour = document.getElementById("count_hour");
+            activeSecond.innerHTML = "00";
+            activeMinute.innerHTML = "00";
+            activeHour.innerHTML = "10";
+
             if(fail === 0) {
-                // clearInterval(obstacleKeepMoving);
-                // $(".girl_run").addClass("active").siblings(".girl_pic").removeClass("active");
 
                 runPicnic();
                 
@@ -81,24 +87,17 @@ function limitTime() {
             }
         }
 
-        // if(fail === 1) {
-        //     clearInterval(limitTimeNum);
-        //     limitSecond = 10;
-        // }
 
     }, 1);
 
     
     showTime = window.setInterval(function () {
 
-        console.log("obstacle show");
-
-        limitSecond--;
+        limitSecond++;
         // 障礙物出現
-        if(limitSecond > 1 && limitSecond <= 10) {
-            show = random(0,1);
-            // console.log("是否出現障礙物：" + show);
-            if(show == 1) {
+        if(limitSecond > 1 && limitSecond < 8) {
+            show = random(1,10);
+            if(show >= 1 && show <=7) {
                 if(tumble < 3) {
                     var thisBox_1 = $("<div class='obstacle-box box-1'><img src='./img/obstacle-1.png'></div>");
                     var thisBox_2 = $("<div class='obstacle-box box-2'><img src='./img/obstacle-2.png'></div>");
@@ -117,13 +116,9 @@ function limitTime() {
             }
         }
 
-        if (limitSecond === 0) {
+        if (limitSecond >= 10) {
             clearInterval(showTime);
         }
-
-        // if(fail === 1) {
-        //     clearInterval(showTime);
-        // }
 
     }, 1000);
 
@@ -131,53 +126,47 @@ function limitTime() {
 
 // 隨機
 function random(min, max) {
-    console.log("random");
     return Math.round(Math.random() * (max - min) + min);
 }
 
 // 障礙物往左跑
 function obstacleRun(target) {
 
-    console.log("obstacleRun");
+    var tolerance = 20;
+    var targetTop = parseInt(target.css("top"));
+    var targetTopTotal = targetTop + pathTop;
 
-    var tolerance = 1.5;
 
     setTimeout(function() {
         target.addClass("move");
         setTimeout(function() {
-            var KeepMovingTime = 333;
-            var girlHeight = $(".girl").height() / boxHeight * 100;
-            var girlTop = parseInt($(".girl").css("top")) / boxHeight * 100;
-            var girlBottom = girlHeight + girlTop - tolerance;
-            var obstacleTop = parseInt($(".path").css("top")) / boxHeight * 100;
+            var KeepMovingTime = 121;
             target.removeClass("move");
             target.addClass("keepmoving");
             
-
             obstacleKeepMoving = window.setInterval(function() {
 
-                console.log("obstacle keeps moving");
-
-                console.log("girlHeight=" + girlHeight);
-                console.log("girlBottom=" + girlBottom);
-                console.log("obstacleTop=" + obstacleTop);
 
                 KeepMovingTime--;
-                if(girlBottom > obstacleTop) {
-                    console.log("girl tumbles！");
 
-                    clearInterval(obstacleKeepMoving);
-                    tumble++;
-                    heart(tumble);
+                if (KeepMovingTime > 106) {
+                    var girlTop = parseInt($(".girl").css("top"));
+                    var girlBottom = girlHeightPx + girlTop - tolerance;
+    
+                    if(girlBottom > targetTopTotal) {
+    
+                        clearInterval(obstacleKeepMoving);
+                        tumble++;
+                        heart(tumble);
+    
 
+                        if(tumble <= 3) {
 
-                    console.log("tumble=" + tumble);
-                    if(tumble <= 3) {
-                        $(".girl_tumble").addClass("active").siblings(".girl_pic").removeClass("active");
-                        setTimeout(function() {
-                            $(".girl_run").addClass("active").siblings(".girl_pic").removeClass("active");
-                            console.log("run again");
-                        },500);
+                            $(".girl_tumble").addClass("active").siblings(".girl_pic").removeClass("active");
+                            setTimeout(function() {
+                                $(".girl_run").addClass("active").siblings(".girl_pic").removeClass("active");
+                            },500);
+                        }
                     }
                 }
 
@@ -195,43 +184,40 @@ function obstacleRun(target) {
 function heart(tumble) {
     var num = tumble - 1;
     $(".heart_item").eq(num).addClass("fail");
-    if(tumble >= 3) {
+    if(tumble === 3) {
         failPopup();
-        // console.log("fail=" + fail);
     }
 }
 
 // 失敗
 function failPopup() {
-    console.log("failpopup");
 
     clearInterval(limitTimeNum);
     clearInterval(showTime);
     clearInterval(obstacleKeepMoving);
 
     // 重新計時
-    limitSecond = 10;
+    limitSecond = 0;
     var newMs = limitSecond * 1000;
     countNum(newMs);
 
     $(".popup-fail").show();
-
-
     setTimeout(function() {
-        $(".girl_init").addClass("active").siblings(".girl_pic").removeClass("active");
-        console.log("stop running");
-    },600);
+        $(".popup-fail").addClass("valid");
+    }, 1500);
+
+    $(".girl_pic").removeClass("active");
+
 
     $(".obstacle-box").each(function() {
         $(this).remove();
-        console.log("clean obstacles");
     })
     fail = 1;
 
-    // tumble = 0;
     $(".heart_item").each(function() {
         $(this).removeClass("fail");
     })
+
 }
 
 // 成功
@@ -263,6 +249,9 @@ function runPicnic() {
 }
 
 $(".btn-again").click(function() {
+    clearInterval(limitTimeNum);
+    clearInterval(showTime);
+    clearInterval(obstacleKeepMoving);
     $(".popup-fail").hide();
     fail = 0;
     $(".btn-start").show();
@@ -270,11 +259,15 @@ $(".btn-again").click(function() {
     $(".count_colon").addClass("stop");
     $(".popup-success").hide();
     $(".popup-start").show();
+
+
+    $(".girl_pic").each(function() {
+        $(this).removeClass("active");
+    })
 })
 
 // 開始遊戲
 $(".btn-start").click(function() {
-    console.log("click popup-start");
 
     $(".popup-start").hide();
     $(".btn-jump").show();
@@ -284,11 +277,19 @@ $(".btn-start").click(function() {
     $(".count_colon").removeClass("stop");
     limitTime();
 
+
+    $(".heart_item").each(function() {
+        $(this).removeClass("fail");
+    })
+    tumble = 0;
+
     $(".girl_run").addClass("active").siblings(".girl_pic").removeClass("active");
 
+    $(".popup-fail").removeClass("valid");
 })
 
 $(".btn-jump_main").click(function() {
+
     jumpUp();
     $(".btn-jump").addClass("jumping");
     $(".girl_jump").addClass("active").siblings(".girl_pic").removeClass("active");
@@ -296,13 +297,12 @@ $(".btn-jump_main").click(function() {
 
 // 跳
 var jumpingUp, jumpingDown;
-var jumpOffset = 0.5;
+var jumpUpOffset = 0.5;
+var jumpDownOffset = 0.5;
 function jumpUp() {
-    console.log("jumpUp");
     jumpingUp = window.setInterval(function() {
-        console.log("jumping up!!!");
         var old_top = parseInt($(".girl").css("top")) / boxHeight * 100;
-        var new_top = old_top - jumpOffset;
+        var new_top = old_top - jumpUpOffset;
         $(".girl").css("top",new_top + "%");
         if (new_top <= 12) {
             clearInterval(jumpingUp);
@@ -312,21 +312,16 @@ function jumpUp() {
 }
 
 function jumpDown() {
-    console.log("jumpDown");
 
     jumpingDown = window.setInterval(function() {
-        console.log("jumping down!!!");
         var old_top = parseInt($(".girl").css("top")) / boxHeight * 100;
-        var new_top = old_top + jumpOffset;
+        var new_top = old_top + jumpDownOffset;
         $(".girl").css("top",new_top + "%");
-        console.log("girl top = " + new_top + "%");
         if (new_top >= 17) {
-
-
             clearInterval(jumpingDown);
             $(".girl").css("top","17%");
             $(".btn-jump").removeClass("jumping");
             $(".girl_run").addClass("active").siblings(".girl_pic").removeClass("active");
         }
-    }, 10);
+    }, 20);
 }

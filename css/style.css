@@ -33,6 +33,13 @@ body {
   top: 12%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.5vw;
 }
 
 .count span {
@@ -42,6 +49,25 @@ body {
 
 .count span.count_ms {
   font-size: 4vw;
+  -webkit-transform: translateY(10%);
+          transform: translateY(10%);
+}
+
+.count_current {
+  -webkit-transform: translateY(-5%);
+          transform: translateY(-5%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5vw;
+}
+
+.count_current span {
+  font-size: 4vw !important;
+  letter-spacing: 0;
 }
 
 .count_colon.stop {
@@ -70,6 +96,7 @@ body {
 .girl {
   position: absolute;
   width: 23%;
+  padding-bottom: calc(23% * 1.47);
   left: 2%;
   top: 17%;
   -webkit-transition: 1ms linear;
@@ -79,6 +106,14 @@ body {
 .girl_pic {
   display: none;
   width: 100%;
+  position: absolute;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .girl_pic.active {
@@ -90,7 +125,10 @@ body {
 }
 
 .girl_tumble {
-  margin-top: 35%;
+  top: inherit;
+  bottom: 0;
+  -webkit-transform: translate(-50%, 10%);
+          transform: translate(-50%, 10%);
 }
 
 .girl.gopicnic {
@@ -209,8 +247,8 @@ body {
 
 .obstacle-box.keepmoving {
   right: 100%;
-  -webkit-transition: 333ms linear;
-  transition: 333ms linear;
+  -webkit-transition: 334ms linear;
+  transition: 334ms linear;
 }
 
 @-webkit-keyframes move {
@@ -267,8 +305,24 @@ body {
   width: 90%;
 }
 
+.popup-fail_main::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 10;
+  opacity: 0;
+}
+
 .popup-fail_bg {
   width: 100%;
+}
+
+.popup-fail.valid .popup-fail_main::before {
+  display: none;
 }
 
 .btn-again {

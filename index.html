@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css?v=1">
+    <link rel="stylesheet" href="./css/style.css?v=3">
 </head>
 <body>
     <div class="container">
@@ -20,11 +20,16 @@
             </div> -->
         </div>
         <div class="count">
-            <span id="count_second">10</span>
+            <span class="count_current">
+                <span id="count_hour">09</span>
+                <span class="count_colon stop">:</span>
+                <span id="count_minute">59</span>
+            </span>
+            <span id="count_second">50</span>
             <span class="count_colon stop">:</span>
             <span id="count_ms" class="count_ms">000</span>
         </div>
-        <div class="girl">
+        <div class="girl girl-0">
             <img class="girl_pic girl_init" src="./img/girl-init.png" alt="">
             <img class="girl_pic girl_run" src="./img/gitl-run.gif" alt="">
             <img class="girl_pic girl_jump" src="./img/girl-jump.png" alt="">
@@ -52,6 +57,7 @@
             <img class="popup-start_bg" src="./img/popup-start.png" alt="">
             <img class="btn btn-start" src="./img/btn-start.gif" alt="">
         </div>
+
          <div class="btn btn-jump">
             <img class="btn-jump_main" src="./img/btn-jump.png" alt="">
             <div class="btn-jump_mask"></div>
@@ -76,6 +82,6 @@
      </div>
 
     <script src="./js/jquery.min.js"></script>
-    <script src="./js/index.js?v=2"></script>
+    <script src="./js/index.js?v=3"></script>
 </body>
 </html>

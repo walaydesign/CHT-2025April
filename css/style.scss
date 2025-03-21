@@ -26,11 +26,25 @@ body {
     left: 50%;
     top: 12%;
     transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1.5vw;
     span {
         font-size: 7vw;
         font-weight: 900;
         &.count_ms {
             font-size: 4vw;
+            transform: translateY(10%);
+        }
+    }
+    &_current {
+        transform: translateY(-5%);
+        display: flex;
+        align-items: center;
+        gap: 0.5vw;
+        span {
+            font-size: 4vw !important;
+            letter-spacing: 0;
         }
     }
     &_colon {
@@ -52,12 +66,19 @@ body {
 .girl {
     position: absolute;
     width: 23%;
+    padding-bottom: calc(23% * 1.47);
     left: 2%;
     top: 17%;
     transition: 1ms linear;
     &_pic {
         display: none;
         width: 100%;
+        position: absolute;
+        height: 100%;
+        object-fit: contain;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         &.active {
             display: block;
         }
@@ -66,7 +87,9 @@ body {
         width: 85%;
     }
     &_tumble {
-        margin-top: 35%;
+        top: inherit;
+        bottom: 0;
+        transform: translate(-50%, 10%);
     }
     &.gopicnic {
         left: 60%;
@@ -143,8 +166,6 @@ body {
     &-box {
         position: absolute;
         right: -18%;
-        // right: 0;
-        // right: 78%;
         transition: 1454ms linear;
         >img {
             width: 100%;
@@ -164,7 +185,7 @@ body {
         }
         &.keepmoving {
             right: 100%;
-            transition: 333ms linear;
+            transition: 334ms linear;
         }
     }
 }
@@ -199,13 +220,30 @@ body {
         }
     }
     &-fail {
-        // display: block;
         &_main {
             position: relative;
             width: 90%;
+            &::before {
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: #fff;
+                z-index: 10;
+                opacity: 0;
+            }
         }
         &_bg {
             width: 100%;
+        }
+        &.valid {
+            .popup-fail_main {
+                &::before {
+                    display: none;
+                }
+            }
         }
     }
 }
