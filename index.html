@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <img class="bg" src="./img/bg.jpg" alt="">
+        <div class="path show-even">
+            <img class="path_bg bg-running active" src="./img/path.png" alt="">
+            <img class="path_bg bg-picnic" src="./img/path-picnic.png" alt="">
+            <div class="obstacle-box box-1">
+                <img src="./img/obstacle-1.png" alt="">
+            </div>
+            <!-- <div class="obstacle-box box-2">
+                <img src="./img/obstacle-2.png" alt="">
+            </div> -->
+        </div>
+        <div class="count">
+            <span id="count_second">10</span>
+            <span class="count_colon stop">:</span>
+            <span id="count_ms">000</span>
+        </div>
+        <div class="girl">
+            <img class="girl_pic girl_init active" src="./img/girl-init.png" alt="">
+            <img class="girl_pic girl_run" src="./img/gitl-run.gif" alt="">
+            <img class="girl_pic girl_jump" src="./img/girl-jump.png" alt="">
+            <img class="girl_pic girl_tumble" src="./img/girl-tumble.png" alt="">
+        </div>
+
+        <div class="heart">
+            <div class="heart_item">
+                <img class="normal" src="./img/heart.png" alt="">
+                <img class="x" src="./img/heart-x.png" alt="">
+            </div>
+            <div class="heart_item">
+                <img class="normal" src="./img/heart.png" alt="">
+                <img class="x" src="./img/heart-x.png" alt="">
+            </div>
+            <div class="heart_item">
+                <img class="normal" src="./img/heart.png" alt="">
+                <img class="x" src="./img/heart-x.png" alt="">
+            </div>
+        </div>
+        
+
+
+        <div class="popup-start">
+            <img class="popup-start_bg" src="./img/popup-start.png" alt="">
+            <img class="btn btn-start" src="./img/btn-start.gif" alt="">
+        </div>
+         <div class="btn btn-jump">
+            <img class="btn-jump_main" src="./img/btn-jump.png" alt="">
+            <div class="btn-jump_mask"></div>
+         </div>
+
+         
+    </div>
+
+    <div class="popup popup-success">
+        <div>
+            <img src="./img/success-popup.png" alt="">
+        </div>
+     </div>
+
+     <div class="popup popup-fail">
+        <div>
+            <div class="popup-fail_main">
+                <img class="popup-fail_bg" src="./img/fail-popup.png" alt="">
+                <img class="btn-again" src="./img/btn-again.png" alt="">
+            </div>
+        </div>
+     </div>
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

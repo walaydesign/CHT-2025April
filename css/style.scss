@@ -1,0 +1,256 @@
+body {
+    padding: 0;
+    margin: 0;
+    touch-action: manipulation;
+}
+
+* {
+    font-family: "微軟正黑體";
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.bg {
+    width: 100%;
+}
+
+.count {
+    position: absolute;
+    left: 50%;
+    top: 12%;
+    transform: translateX(-50%);
+    span {
+        font-size: 7vw;
+        font-weight: 900;
+    }
+    &_colon {
+        &.stop {
+            animation: flash 500ms ease-in-out infinite alternate;
+        }
+    }
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.girl {
+    position: absolute;
+    width: 18%;
+    left: 0;
+    top: 19%;
+    transition: 1ms linear;
+    &_pic {
+        display: none;
+        width: 100%;
+        &.active {
+            display: block;
+        }
+    }
+    &_init {
+        width: 85%;
+    }
+    // &.jump {
+    //     animation: jump 0.8s ease-in-out;
+    // }
+    &.gopicnic {
+        left: 60%;
+        transition: 1s linear;
+    }
+}
+
+@keyframes jump {
+    0% {
+        top: 19%;
+    }
+    50% {
+        top: 13.5%;
+    }
+    100% {
+        top: 19%;
+    }
+}
+
+.path {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 19.5%;
+    overflow-x: hidden;
+    &_bg {
+        width: 100%;
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+}
+
+.btn {
+    position: absolute;
+    width: 30%;
+    left: 50%;
+    top: 27%;
+    transform: translateX(-50%);
+    &-jump {
+        padding-bottom: calc(30% * 0.51);
+        display: none;
+        >img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            top: 0;
+            left: 0;
+        }
+        &_mask {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            display: none;
+        }
+        &.jumping {
+            .btn-jump_mask {
+                display: block;
+            }
+        }
+    }
+    &-start {
+        top: 74%;
+        
+    }
+}
+
+.obstacle {
+    &-box {
+        position: absolute;
+        right: -18%;
+        // right: 0;
+        transition: 1454ms linear;
+        >img {
+            width: 100%;
+        }
+        &.box {
+            &-1 {
+                width: 17%;
+                top: 22%;
+            }
+            &-2 {
+                width: 18%;
+                top: 0;
+            }
+        }
+        &.move {
+            right: 78%;
+        }
+        &.keepmoving {
+            right: 100%;
+            transition: 333ms linear;
+        }
+    }
+}
+
+@keyframes move {
+    0% {
+        right: 66%;
+    }
+    100% {
+        right: 100%;
+    }
+}
+
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    max-width: 640px;
+    background-color: rgba(255,255,255,0.8);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    >div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        >img {
+            width: 90%;
+        }
+    }
+    &-fail {
+        // display: block;
+        &_main {
+            position: relative;
+            width: 90%;
+        }
+        &_bg {
+            width: 100%;
+        }
+    }
+}
+
+.btn-again {
+    position: absolute;
+    width: 40%;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.heart {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    padding-right: 5%;
+    top: 12.5%;
+    width: 100%;
+    &_item {
+        width: 5%;
+        >img {
+            width: 100%;
+            &.x {
+                display: none;
+            }
+        }
+        &.fail {
+            >img {
+                &.normal {
+                    display: none;
+                }
+                &.x {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.popup-start {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+    &_bg {
+        width: 100%;
+    }
+}

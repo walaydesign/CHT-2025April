@@ -1,0 +1,324 @@
+@charset "UTF-8";
+body {
+  padding: 0;
+  margin: 0;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+}
+
+* {
+  font-family: "微軟正黑體";
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.bg {
+  width: 100%;
+}
+
+.count {
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.count span {
+  font-size: 7vw;
+  font-weight: 900;
+}
+
+.count_colon.stop {
+  -webkit-animation: flash 500ms ease-in-out infinite alternate;
+          animation: flash 500ms ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.girl {
+  position: absolute;
+  width: 18%;
+  left: 0;
+  top: 19%;
+  -webkit-transition: 1ms linear;
+  transition: 1ms linear;
+}
+
+.girl_pic {
+  display: none;
+  width: 100%;
+}
+
+.girl_pic.active {
+  display: block;
+}
+
+.girl_init {
+  width: 85%;
+}
+
+.girl.gopicnic {
+  left: 60%;
+  -webkit-transition: 1s linear;
+  transition: 1s linear;
+}
+
+@-webkit-keyframes jump {
+  0% {
+    top: 19%;
+  }
+  50% {
+    top: 13.5%;
+  }
+  100% {
+    top: 19%;
+  }
+}
+
+@keyframes jump {
+  0% {
+    top: 19%;
+  }
+  50% {
+    top: 13.5%;
+  }
+  100% {
+    top: 19%;
+  }
+}
+
+.path {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 19.5%;
+  overflow-x: hidden;
+}
+
+.path_bg {
+  width: 100%;
+  display: none;
+}
+
+.path_bg.active {
+  display: block;
+}
+
+.btn {
+  position: absolute;
+  width: 30%;
+  left: 50%;
+  top: 27%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.btn-jump {
+  padding-bottom: calc(30% * 0.51);
+  display: none;
+}
+
+.btn-jump > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  top: 0;
+  left: 0;
+}
+
+.btn-jump_mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  display: none;
+}
+
+.btn-jump.jumping .btn-jump_mask {
+  display: block;
+}
+
+.btn-start {
+  top: 74%;
+}
+
+.obstacle-box {
+  position: absolute;
+  right: -18%;
+  -webkit-transition: 1454ms linear;
+  transition: 1454ms linear;
+}
+
+.obstacle-box > img {
+  width: 100%;
+}
+
+.obstacle-box.box-1 {
+  width: 17%;
+  top: 22%;
+}
+
+.obstacle-box.box-2 {
+  width: 18%;
+  top: 0;
+}
+
+.obstacle-box.move {
+  right: 78%;
+}
+
+.obstacle-box.keepmoving {
+  right: 100%;
+  -webkit-transition: 333ms linear;
+  transition: 333ms linear;
+}
+
+@-webkit-keyframes move {
+  0% {
+    right: 66%;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+@keyframes move {
+  0% {
+    right: 66%;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  max-width: 640px;
+  background-color: rgba(255, 255, 255, 0.8);
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: none;
+}
+
+.popup > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.popup > div > img {
+  width: 90%;
+}
+
+.popup-fail_main {
+  position: relative;
+  width: 90%;
+}
+
+.popup-fail_bg {
+  width: 100%;
+}
+
+.btn-again {
+  position: absolute;
+  width: 40%;
+  bottom: 10%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.heart {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 5px;
+  padding-right: 5%;
+  top: 12.5%;
+  width: 100%;
+}
+
+.heart_item {
+  width: 5%;
+}
+
+.heart_item > img {
+  width: 100%;
+}
+
+.heart_item > img.x {
+  display: none;
+}
+
+.heart_item.fail > img.normal {
+  display: none;
+}
+
+.heart_item.fail > img.x {
+  display: block;
+}
+
+.popup-start {
+  position: absolute;
+  width: 90%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: 10%;
+}
+
+.popup-start_bg {
+  width: 100%;
+}
+/*# sourceMappingURL=style.css.map */
