@@ -29,6 +29,9 @@ body {
     span {
         font-size: 7vw;
         font-weight: 900;
+        &.count_ms {
+            font-size: 4vw;
+        }
     }
     &_colon {
         &.stop {
@@ -48,9 +51,9 @@ body {
 
 .girl {
     position: absolute;
-    width: 18%;
-    left: 0;
-    top: 19%;
+    width: 23%;
+    left: 2%;
+    top: 17%;
     transition: 1ms linear;
     &_pic {
         display: none;
@@ -62,9 +65,9 @@ body {
     &_init {
         width: 85%;
     }
-    // &.jump {
-    //     animation: jump 0.8s ease-in-out;
-    // }
+    &_tumble {
+        margin-top: 35%;
+    }
     &.gopicnic {
         left: 60%;
         transition: 1s linear;
@@ -132,7 +135,7 @@ body {
     }
     &-start {
         top: 74%;
-        
+
     }
 }
 
@@ -141,18 +144,19 @@ body {
         position: absolute;
         right: -18%;
         // right: 0;
+        // right: 78%;
         transition: 1454ms linear;
         >img {
             width: 100%;
         }
         &.box {
             &-1 {
-                width: 17%;
-                top: 22%;
+                width: 15%;
+                top: 35%;
             }
             &-2 {
-                width: 18%;
-                top: 0;
+                width: 16%;
+                top: 10%;
             }
         }
         &.move {
@@ -221,10 +225,10 @@ body {
     justify-content: flex-end;
     gap: 5px;
     padding-right: 5%;
-    top: 12.5%;
+    top: 14%;
     width: 100%;
     &_item {
-        width: 5%;
+        width: 7%;
         >img {
             width: 100%;
             &.x {
@@ -246,10 +250,10 @@ body {
 
 .popup-start {
     position: absolute;
-    width: 90%;
+    width: 85%;
     left: 50%;
     transform: translateX(-50%);
-    top: 10%;
+    top: 12%;
     &_bg {
         width: 100%;
     }

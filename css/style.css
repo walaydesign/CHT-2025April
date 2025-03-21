@@ -40,6 +40,10 @@ body {
   font-weight: 900;
 }
 
+.count span.count_ms {
+  font-size: 4vw;
+}
+
 .count_colon.stop {
   -webkit-animation: flash 500ms ease-in-out infinite alternate;
           animation: flash 500ms ease-in-out infinite alternate;
@@ -65,9 +69,9 @@ body {
 
 .girl {
   position: absolute;
-  width: 18%;
-  left: 0;
-  top: 19%;
+  width: 23%;
+  left: 2%;
+  top: 17%;
   -webkit-transition: 1ms linear;
   transition: 1ms linear;
 }
@@ -83,6 +87,10 @@ body {
 
 .girl_init {
   width: 85%;
+}
+
+.girl_tumble {
+  margin-top: 35%;
 }
 
 .girl.gopicnic {
@@ -186,13 +194,13 @@ body {
 }
 
 .obstacle-box.box-1 {
-  width: 17%;
-  top: 22%;
+  width: 15%;
+  top: 35%;
 }
 
 .obstacle-box.box-2 {
-  width: 18%;
-  top: 0;
+  width: 16%;
+  top: 10%;
 }
 
 .obstacle-box.move {
@@ -285,12 +293,12 @@ body {
           justify-content: flex-end;
   gap: 5px;
   padding-right: 5%;
-  top: 12.5%;
+  top: 14%;
   width: 100%;
 }
 
 .heart_item {
-  width: 5%;
+  width: 7%;
 }
 
 .heart_item > img {
@@ -311,11 +319,11 @@ body {
 
 .popup-start {
   position: absolute;
-  width: 90%;
+  width: 85%;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  top: 10%;
+  top: 12%;
 }
 
 .popup-start_bg {
