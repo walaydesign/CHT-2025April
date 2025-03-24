@@ -54,8 +54,6 @@ body {
 }
 
 .count_current {
-  -webkit-transform: translateY(-5%);
-          transform: translateY(-5%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -66,13 +64,27 @@ body {
 }
 
 .count_current span {
-  font-size: 4vw !important;
   letter-spacing: 0;
 }
 
 .count_colon.stop {
   -webkit-animation: flash 500ms ease-in-out infinite alternate;
           animation: flash 500ms ease-in-out infinite alternate;
+}
+
+@media screen and (min-width: 640px) {
+  .count {
+    gap: 10px;
+  }
+  .count_current {
+    gap: 5px;
+  }
+  .count span {
+    font-size: 30px;
+  }
+  .count span.count_ms {
+    font-size: 14px;
+  }
 }
 
 @-webkit-keyframes flash {
@@ -180,7 +192,7 @@ body {
 
 .btn {
   position: absolute;
-  width: 30%;
+  width: 40%;
   left: 50%;
   top: 27%;
   -webkit-transform: translateX(-50%);

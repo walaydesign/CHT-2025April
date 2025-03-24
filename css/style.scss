@@ -38,18 +38,30 @@ body {
         }
     }
     &_current {
-        transform: translateY(-5%);
+        // transform: translateY(-5%);
         display: flex;
         align-items: center;
         gap: 0.5vw;
         span {
-            font-size: 4vw !important;
+            // font-size: 4vw !important;
             letter-spacing: 0;
         }
     }
     &_colon {
         &.stop {
             animation: flash 500ms ease-in-out infinite alternate;
+        }
+    }
+    @media screen and (min-width: 640px) {
+        gap: 10px;
+        &_current {
+            gap: 5px;
+        }
+        span {
+            font-size: 30px;
+            &.count_ms {
+                font-size: 14px;
+            }
         }
     }
 }
@@ -126,7 +138,7 @@ body {
 
 .btn {
     position: absolute;
-    width: 30%;
+    width: 40%;
     left: 50%;
     top: 27%;
     transform: translateX(-50%);
